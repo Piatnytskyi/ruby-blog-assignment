@@ -10,8 +10,36 @@
   </head>
 
   <body>
-    <%= link_to 'Feed', posts_path %>
-    <%= link_to 'New article', new_post_path %>
-    <%= yield %>
+    <nav class="navbar navbar-expand-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="<%= posts_path %>">Ruby Blog Assignment</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= posts_path %>">Feed</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <%= link_to 'New article', new_post_path, class: 'btn btn-outline-secondary' %>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <% flash.each do |name, message| %>
+            <div class="alert alert-<%= name %>">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

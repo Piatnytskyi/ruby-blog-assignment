@@ -1,20 +1,32 @@
+<% if @post.errors.any? %>
+    <div class="alert alert-danger">
+        <h5><%= 'Form filled incorrectly!' %></h5>
+        <ul>
+            <% @post.errors.full_messages.each do |message| %>
+                <h4><li><%= message %></li></h4>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
 <%= form_for @post do |f| %>
-    <div class="form-control">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+    <div class="form-group">
+        <h3><%= f.label :title %></h3>
+        <%= f.text_field :title, class: 'form-control'%>
     <div>
 
-    <div class="form-control">
-        <%= f.label :summary %>
-        <%= f.text_area :summary %>
+    <div class="form-group">
+        <h3><%= f.label :summary %></h3>
+        <%= f.text_area :summary, class: 'form-control' %>
     <div>
 
-    <div class="form-control">
-        <%= f.label :body %>
-        <%= f.text_area :body %>
+    <div class="form-group">
+        <h3><%= f.label :body %></h3>
+        <%= f.text_area :body, class: 'form-control' %>
     <div>
 
-    <div class="form-control">
-        <%= f.submit 'Done' %>
+    <div class="form-group">
+        <%= f.submit 'Done', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', :back, class: 'btn btn-warning' %>
     <div>
 <% end %>
