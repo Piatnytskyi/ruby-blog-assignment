@@ -3,9 +3,11 @@
         <h2><%= link_to post.title, post_path(post) %></h2>
         <small>
             <h6>
-            <time><%= post.created_at.to_date.strftime('%B %d, %Y') %></time> |
-            <%= link_to 'Edit', edit_post_path(post) %> |
-            <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <time><%= post.created_at.to_date.strftime('%B %d, %Y') %></time>
+            <% if current_user && current_user.admin %>
+                | <%= link_to 'Edit', edit_post_path(post) %> |
+                <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
             </h6>
         </small>
     </section>

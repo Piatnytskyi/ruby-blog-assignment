@@ -10,24 +10,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="<%= posts_path %>">Ruby Blog Assignment</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="<%= posts_path %>">Feed</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-        </ul>
-        <%= link_to 'New article', new_post_path, class: 'btn btn-outline-secondary' %>
-      </div>
-    </nav>
+    <%= render 'layouts/navbar' %>
 
     <div class="container">
       <div class="row">
