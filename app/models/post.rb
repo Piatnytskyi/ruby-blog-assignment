@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :thumbnail
   has_one_attached :background
+  has_many :comments, dependent: :destroy
 
   has_rich_text :body
 

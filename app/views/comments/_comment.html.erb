@@ -1,0 +1,12 @@
+<div id="post-comment-<%= comment.id %>">
+    <h4><%= comment.body %></h4>
+    <small>
+        <h5 class="text-muted">
+            <time><%= comment.created_at.strftime('%I:%M %p %B %d, %Y') %></time> by
+            <%= comment.user.email %>
+            <% if current_user && (current_user.admin || current_user == comment.user )%>
+                | <%= link_to 'Delete', post_comment_path(@post, comment), method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </h5>
+    </small>
+</div>
