@@ -10,8 +10,9 @@
   </head>
 
   <body>
-    <%= link_to 'Feed', posts_path %>
-    <%= link_to 'New article', new_post_path %>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

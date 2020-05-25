@@ -1,4 +1,42 @@
-<h1><%= @post.title %></h1>
-<%= link_to 'Edit', edit_post_path(@post)%>
-<%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
-<p><%= @post.body %></p>
+<article class="post">
+    <div class="post-background">
+      <%= image_tag(@post.background, style:'width:100%') %>
+    </div>
+    <section class="post-head">
+        <h1><%= @post.title %></h1>
+        <small>
+            <h5 class="text-muted">
+                <time><%= @post.created_at.to_date.strftime('%B %d, %Y') %></time> by
+                <%= @post.user.email %> |
+                <%= pluralize(@post.views, "View") %> |
+                <%= pluralize(@post.comments.count, 'Comment') %>
+                <% if current_user && current_user.admin %>
+                    | <%= link_to 'Edit', edit_post_path(@post) %> |
+                    <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+            </h5>
+        </small>
+    </section>
+
+    <section class="post-body text-justify">
+        <%= @post.body %>
+    </section>
+</article>
+<hr>
+<!-- TODO: Change to simple_from form -->
+<% if current_user %>
+    <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_field :body, :style => 'width: 100%; margin-bottom: 1em;' %>
+        <!-- TODO: Style button -->
+        <%= f.submit "Comment" %>
+    <% end %>
+<% else %>
+    You need to <%= link_to 'Sign in', new_user_session_path%> before comment!
+<% end %>
+<br>
+
+<div id="post-comments">
+    <% @comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+    <% end %>
+</div>
