@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version: 2.7.1
+Ruby on Rails version: 6.0.3.1
+Run ```rails db:seeds``` to populate database with fake postes and to create administrator user dev@example.com with password "devpass".
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Project uses devise and simple_form gems and stylized with Bootstrap 4.
